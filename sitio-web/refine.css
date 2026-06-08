@@ -1,0 +1,104 @@
+/* ============================================================
+   PIALIN — Capa de refinamiento "boutique"
+   Eleva el sistema base: menos caricatura, más sofisticado.
+   Se importa al final, así que sobrescribe lo anterior.
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap');
+
+:root {
+  /* Familia editorial para titulares */
+  --font-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+
+  /* Formas más sobrias (menos burbuja) */
+  --radius-md: 12px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+
+  /* Sombras más sutiles y difusas */
+  --shadow-xs: 0 1px 2px rgba(60, 70, 33, 0.05);
+  --shadow-sm: 0 1px 3px rgba(60, 70, 33, 0.06);
+  --shadow-md: 0 8px 24px rgba(60, 70, 33, 0.08);
+  --shadow-lg: 0 16px 40px rgba(44, 58, 23, 0.10);
+  --shadow-xl: 0 28px 64px rgba(44, 58, 23, 0.14);
+}
+
+/* ---- Titulares: serif elegante --------------------------- */
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+h1 { font-weight: 500; }
+
+/* ---- UI limpia: eyebrows, nav y botones en sans ---------- */
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.18em;
+  color: var(--brown-500);
+}
+.site-nav .navlink { font-family: var(--font-body); font-weight: var(--fw-bold); font-size: 14px; letter-spacing: 0.01em; }
+.btn { font-family: var(--font-body); font-weight: var(--fw-bold); border-radius: var(--radius-sm); letter-spacing: 0.01em; }
+.btn--lg { border-radius: var(--radius-md); }
+
+/* ---- Hero: degradé más profundo y sobrio ----------------- */
+.hero { background: linear-gradient(150deg, var(--green-900) 0%, var(--green-700) 52%, var(--gold-700) 115%); }
+.hero h1 { letter-spacing: -0.02em; }
+.eyebrow.on-hero { background: rgba(255,255,255,.16); color: #fff; backdrop-filter: blur(4px); letter-spacing: 0.18em; }
+
+/* ---- Emblema: más chico y enmarcado como foto ------------ */
+.hero .emblem {
+  width: 260px; height: 260px;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255,255,255,.5);
+  box-shadow: var(--shadow-xl);
+  background: var(--cream-50);
+}
+.brand-lockup img { border-radius: 10px; border: 1px solid var(--border-soft); }
+
+/* ---- Íconos de línea (Lucide) ---------------------------- */
+.card-icon { margin-bottom: 14px; color: var(--green-700); display: inline-flex; }
+.card-icon svg { width: 26px; height: 26px; stroke-width: 1.6; }
+.svg-accent svg { width: 34px; height: 34px; stroke-width: 1.4; color: var(--green-400); }
+.btn svg { width: 18px; height: 18px; stroke-width: 2; }
+
+/* ---- Avatares de las fichas: monograma sobrio ------------ */
+.avatar--initial {
+  display: flex; align-items: center; justify-content: center;
+  background: var(--green-100); color: var(--green-700);
+  font-family: var(--font-serif); font-weight: 600; font-size: 22px;
+  border: 1px solid var(--green-200);
+}
+
+/* ---- Cards y secciones: un punto más sobrias ------------- */
+.card { border-color: var(--cream-300); }
+.disc-card .pct { font-family: var(--font-serif); color: var(--gold-700); }
+.petcard .pet-name { font-family: var(--font-serif); }
+.quote blockquote { font-family: var(--font-serif); font-weight: 500; font-style: italic; }
+.price-table thead th { font-family: var(--font-body); letter-spacing: 0.1em; }
+.price-table td.price { font-family: var(--font-serif); }
+
+/* ---- Logo tipográfico (sin caricatura) ------------------- */
+.logomark {
+  width: 44px; height: 44px; flex: 0 0 auto;
+  border-radius: 10px; background: var(--green-600); color: var(--cream-50);
+  font-family: var(--font-serif); font-weight: 700; font-size: 24px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+.brand-lockup .name { font-family: var(--font-serif); font-weight: 700; color: var(--green-700); font-size: 22px; letter-spacing: -0.01em; }
+.brand-lockup .sub { color: var(--brown-500); }
+.site-footer .name { font-family: var(--font-serif); font-weight: 600; letter-spacing: -0.01em; }
+
+/* ---- Logo de marca en el header -------------------------- */
+.brand-logo { width: 46px; height: 46px; object-fit: cover; border-radius: 10px; border: 1px solid var(--border-soft); box-shadow: var(--shadow-sm); flex: 0 0 auto; }
+
+/* ---- Logo en el hero (enmarcado, sobrio) ----------------- */
+.hero-logo {
+  display: block;
+  width: 100%; max-width: 320px;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: var(--shadow-xl);
+  background: var(--cream-50);
+}

@@ -1,0 +1,96 @@
+/* ============================================================
+   PIALIN — COLOR TOKENS
+   Paleta tomada del emblema: verdes de campo en degradé hacia
+   amarillo/tan tenue, sobre crema cálida. Voz: cálida, cercana,
+   de confianza.
+   ============================================================ */
+:root {
+  /* ---- Verde campo (primario) ----------------------------- */
+  --green-950: #232f12;
+  --green-900: #2c3a17;
+  --green-800: #3b4a1f;
+  --green-700: #4f6128;
+  --green-600: #678033; /* primario de marca */
+  --green-500: #7e9a45;
+  --green-400: #9cb16d; /* salvia / corbatín */
+  --green-300: #bccb92;
+  --green-200: #d6e0b6;
+  --green-100: #e9eed5;
+  --green-50:  #f4f6ea;
+
+  /* ---- Dorado / amarillo tenue (secundario) --------------- */
+  --gold-700: #a9742c;
+  --gold-600: #c5923a;
+  --gold-500: #dca94b;
+  --gold-400: #e8c381; /* pelaje golden */
+  --gold-300: #efd6a6;
+  --gold-200: #f5e6c6;
+  --gold-100: #faf1de;
+
+  /* ---- Madera / café (texto cálido, "lin") ---------------- */
+  --brown-800: #4a3520;
+  --brown-700: #5c4326;
+  --brown-600: #6f4e2e;
+  --brown-500: #8a6a45;
+  --brown-300: #c3a988;
+
+  /* ---- Crema / fondos ------------------------------------- */
+  --cream-50:  #fdfaf3;
+  --cream-100: #faf4e9;
+  --cream-200: #f3ead7;
+  --cream-300: #e9dcc2;
+
+  /* ---- Acentos suaves ------------------------------------- */
+  --mint-400:   #9fd9a8; /* menta corbatín */
+  --berry-500:  #ab608e; /* morado plaquita */
+  --sky-400:    #8fc4dd; /* cielo */
+
+  /* ---- Neutros cálidos ------------------------------------ */
+  --warm-900: #2a2418;
+  --warm-700: #4f463a;
+  --warm-500: #7c7264;
+  --warm-300: #b8ae9d;
+  --warm-200: #d8d0c1;
+  --warm-100: #ece6da;
+  --white:    #ffffff;
+
+  /* ---- Semánticos: estado --------------------------------- */
+  --success: #4f8a3d;
+  --warning: #dca94b;
+  --danger:  #c0533f;
+  --info:    #5b87a3;
+
+  /* ============================================================
+     ALIAS SEMÁNTICOS  (usar estos en componentes/UI)
+     ============================================================ */
+  /* Texto */
+  --text-strong:  var(--green-900);
+  --text-body:    var(--brown-700);
+  --text-muted:   var(--warm-500);
+  --text-on-dark: var(--cream-100);
+  --text-brand:   var(--green-600);
+
+  /* Superficies */
+  --surface-page:  var(--cream-100);
+  --surface-card:  var(--white);
+  --surface-soft:  var(--green-50);
+  --surface-warm:  var(--gold-100);
+  --surface-dark:  var(--green-900);
+
+  /* Marca */
+  --brand-primary:        var(--green-600);
+  --brand-primary-hover:  var(--green-700);
+  --brand-primary-press:  var(--green-800);
+  --brand-secondary:      var(--gold-500);
+  --brand-accent:         var(--mint-400);
+
+  /* Bordes / líneas */
+  --border-soft:   var(--cream-300);
+  --border-strong: var(--green-200);
+  --ring-focus:    var(--green-400);
+
+  /* Degradés de marca */
+  --gradient-brand: linear-gradient(135deg, var(--green-700) 0%, var(--green-500) 45%, var(--gold-400) 100%);
+  --gradient-hero:  linear-gradient(160deg, var(--green-600) 0%, var(--green-400) 55%, var(--gold-300) 100%);
+  --gradient-soft:  linear-gradient(180deg, var(--cream-50) 0%, var(--gold-100) 100%);
+}
