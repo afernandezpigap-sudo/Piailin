@@ -23,6 +23,7 @@
       <nav class="site-nav">
         <button class="navlink is-active" data-nav="home">Inicio</button>
         <button class="navlink" data-nav="tarifas">Tarifas</button>
+        <a class="navlink" href="./guia.html">Guía gratis</a>
         <button class="navlink" data-nav="reserva">Reservar</button>
       </nav>
       <button class="btn btn--primary btn--sm" data-nav="reserva">Reservar ahora</button>
@@ -119,6 +120,18 @@
           <div class="svg-accent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></svg></div>
           <blockquote>"Dejé a mi Toby por una semana y me mandaban fotos cada día. Volví y estaba feliz, como si hubiera estado de vacaciones. Son unas verdaderas madres sustitutas."</blockquote>
           <cite>— Carolina, mamá de Toby</cite>
+        </div>
+      </div>
+
+      <!-- IMÁN DE LEADS: guía gratis -->
+      <div class="container section">
+        <div class="card card--soft" style="display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding:28px 32px;">
+          <div>
+            <span class="eyebrow">Guía gratis</span>
+            <h2 style="font-size:var(--text-xl);margin:6px 0 6px;">¿Es su primera vez lejos de casa?</h2>
+            <p style="margin:0;color:var(--text-body);max-width:520px;">Descarga gratis <strong>"Primera estadía sin estrés"</strong>: 7 pasos para preparar a tu perrhijo (y tu corazón). Te llega al instante.</p>
+          </div>
+          <a class="btn btn--lg btn--primary" href="./guia.html">Descargar la guía</a>
         </div>
       </div>
 
@@ -221,7 +234,9 @@
               </select></span></label>
             </div>
             <label class="field"><span class="lbl">Cuéntanos de su rutina, mañas y mimos</span><span class="control"><textarea name="notas" placeholder="Come 2 veces al día, duerme en la cama, le encanta la pelota..."></textarea></span></label>
-            <button type="submit" class="btn btn--lg btn--primary btn--block"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/></svg> Enviar solicitud por WhatsApp</button>
+            <input type="hidden" name="_subject" value="Nueva reserva — Piailin Hotel Canino" />
+            <button type="submit" class="btn btn--lg btn--primary btn--block"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/></svg> Enviar reserva</button>
+            <p style="font-size:var(--text-xs);color:var(--text-muted);margin-top:10px;text-align:center;">Al enviar, recibiremos tus datos para coordinar la reserva y te contactaremos por correo o WhatsApp. No los compartimos con terceros.</p>
             <p class="price-note" id="form-msg" style="display:none;"></p>
           </form>
 
@@ -287,10 +302,17 @@
     var initial = (location.hash || '#home').replace('#', '');
     if (document.getElementById('view-' + initial)) navigate(initial);
 
-    // --- Envío del formulario por WhatsApp ---
-    // ⬇️ PON AQUÍ EL NÚMERO de WhatsApp del hotel, formato internacional sin "+" ni espacios.
-    //    Ejemplo Chile: '56912345678'. Si lo dejas vacío, WhatsApp te dejará elegir el contacto.
+    // ============================================================
+    //  CONFIGURACIÓN DEL FORMULARIO DE RESERVA
+    // ============================================================
+    // 1) Número de WhatsApp del hotel (formato internacional sin "+" ni espacios).
+    //    Ejemplo Chile: '56912345678'. Si lo dejas vacío, WhatsApp deja elegir el contacto.
     var WHATSAPP_NUMERO = ''; // [PLACEHOLDER]
+
+    // 2) Endpoint de Formspree para recibir las reservas por CORREO.
+    //    Crea una cuenta gratis en formspree.io, crea un formulario y pega aquí su URL.
+    //    Ejemplo: 'https://formspree.io/f/abcdwxyz'. Si lo dejas vacío, solo se usa WhatsApp.
+    var FORMSPREE_ENDPOINT = ''; // [PLACEHOLDER]
 
     document.getElementById('reserva-form').addEventListener('submit', function (e) {
       e.preventDefault();
@@ -318,16 +340,41 @@
         '📍 Sede: ' + g('sede'),
         '📝 Notas: ' + g('notas')
       ];
-      var texto = encodeURIComponent(lineas.join('\n'));
-      var url = 'https://wa.me/' + WHATSAPP_NUMERO + '?text=' + texto;
 
-      window.open(url, '_blank');
+      function abrirWhatsApp() {
+        var url = 'https://wa.me/' + WHATSAPP_NUMERO + '?text=' + encodeURIComponent(lineas.join('\n'));
+        window.open(url, '_blank');
+      }
+      function exito(textoExtra) {
+        msg.style.display = 'block';
+        msg.style.color = 'var(--success)';
+        msg.textContent = '¡Gracias! Recibimos tu reserva' + (textoExtra || '') + ' Te contactaremos pronto. 🐾';
+        f.reset();
+      }
+      function errorSuave() {
+        msg.style.display = 'block';
+        msg.style.color = 'var(--danger)';
+        msg.textContent = 'No pudimos guardar la reserva, pero abrimos WhatsApp para que nos escribas directo.';
+      }
 
-      msg.style.display = 'block';
-      msg.style.color = 'var(--success)';
-      msg.textContent = WHATSAPP_NUMERO
-        ? '¡Gracias! Abrimos WhatsApp con tu solicitud lista para enviar.'
-        : '¡Gracias! Abrimos WhatsApp con tu mensaje listo — elige el contacto de Piailin para enviarlo.';
+      // 1) Guardar en el correo (Formspree) si está configurado; luego 2) abrir WhatsApp.
+      if (FORMSPREE_ENDPOINT) {
+        fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          body: new FormData(f),
+          headers: { 'Accept': 'application/json' }
+        }).then(function (r) {
+          abrirWhatsApp();
+          if (r.ok) { exito(' por correo y abrimos WhatsApp.'); }
+          else { errorSuave(); }
+        }).catch(function () {
+          abrirWhatsApp();
+          errorSuave();
+        });
+      } else {
+        abrirWhatsApp();
+        exito(WHATSAPP_NUMERO ? ' y abrimos WhatsApp.' : ' — elige el contacto de Piailin en WhatsApp para enviarlo.');
+      }
     });
   </script>
 </body>
