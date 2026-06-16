@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test: ¿Cuál es el plan ideal para tu perro? — Piailin</title>
+  <meta name="description" content="Responde 6 preguntas y descubre el plan de hospedaje ideal para tu perrhijo en Piailin Hotel Canino. Gratis." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23678033'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' font-weight='700' fill='%23faf4e9' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="./styles.css" />
+  <style>
+    .test-main { max-width: 680px; margin: 0 auto; padding: 36px 24px 64px; }
+    .test-head { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+    .test-head img { width: 40px; height: 40px; border-radius: 9px; border: 1px solid var(--border-soft); object-fit: cover; }
+    .test-head .name { font-family: var(--font-serif); font-weight: 700; color: var(--green-700); font-size: 18px; line-height: 1; }
+    .progress { height: 8px; background: var(--green-100); border-radius: var(--radius-pill); overflow: hidden; margin: 18px 0 24px; }
+    .progress > span { display: block; height: 100%; background: var(--gradient-brand); width: 0; transition: width var(--dur-base) var(--ease-soft); }
+    .q-title { font-size: var(--text-2xl); margin-bottom: 18px; }
+    .q-step { font-size: var(--text-sm); color: var(--text-muted); font-weight: var(--fw-bold); letter-spacing: .08em; text-transform: uppercase; }
+    .options { display: flex; flex-direction: column; gap: 12px; }
+    .opt { text-align: left; width: 100%; padding: 16px 18px; border-radius: var(--radius-md); border: 1.5px solid var(--border-soft); background: var(--surface-card); font-family: var(--font-body); font-size: var(--text-md); color: var(--text-body); cursor: pointer; transition: border-color var(--dur-fast) var(--ease-soft), background var(--dur-fast) var(--ease-soft), transform var(--dur-fast) var(--ease-soft); }
+    .opt:hover { border-color: var(--green-400); background: var(--green-50); }
+    .opt:active { transform: scale(0.99); }
+    .nav-row { display: flex; justify-content: space-between; margin-top: 22px; }
+    .link-btn { background: none; border: none; color: var(--text-muted); font-family: var(--font-body); font-weight: var(--fw-bold); cursor: pointer; font-size: var(--text-sm); }
+    .link-btn:hover { color: var(--green-700); }
+    .hero-card { background: var(--gradient-hero); border-radius: var(--radius-lg); padding: 32px; color: #fff; text-align: center; box-shadow: var(--shadow-lg); }
+    .hero-card h1 { color: #fff; font-size: var(--text-3xl); margin-bottom: 10px; }
+    .hero-card p { color: rgba(255,255,255,.95); font-size: var(--text-lg); margin-bottom: 22px; }
+    .result-badge { display: inline-block; background: var(--green-100); color: var(--green-800); font-family: var(--font-body); font-weight: var(--fw-bold); font-size: var(--text-sm); padding: 6px 14px; border-radius: var(--radius-pill); margin-bottom: 12px; }
+    .result-plan { font-family: var(--font-serif); font-weight: 700; font-size: var(--text-3xl); color: var(--text-strong); margin-bottom: 10px; }
+    .result-desc { color: var(--text-body); margin-bottom: 8px; }
+    .capture { margin-top: 22px; padding: 24px; border-radius: var(--radius-lg); background: var(--surface-card); border: 1px solid var(--border-soft); box-shadow: var(--shadow-sm); }
+    .capture h2 { font-size: var(--text-xl); margin-bottom: 4px; }
+    .capture .who { font-size: var(--text-sm); color: var(--text-muted); margin-bottom: 16px; }
+    .field2 { display: flex; align-items: center; background: #fff; border: 1.5px solid var(--cream-300); border-radius: var(--radius-md); padding: 0 14px; margin-bottom: 12px; transition: border-color var(--dur-base), box-shadow var(--dur-base); }
+    .field2:focus-within { border-color: var(--green-400); box-shadow: var(--ring); }
+    .field2 input { flex: 1; border: none; outline: none; background: transparent; font-family: var(--font-body); font-size: var(--text-md); padding: 13px 0; }
+    .msg { font-size: var(--text-sm); margin-top: 10px; text-align: center; }
+    .center { text-align: center; }
+    .hidden { display: none; }
+    .test-footer { text-align: center; margin-top: 28px; }
+    .test-footer a { color: var(--text-muted); font-size: var(--text-sm); }
+  </style>
+</head>
+<body>
+  <div class="test-main">
+    <a class="test-head" href="./index.html" style="text-decoration:none;">
+      <img src="./assets/pialin-emblem.jpeg" alt="Piailin" />
+      <span style="display:flex;flex-direction:column;line-height:1.1;">
+        <span class="name">Piailin</span>
+        <span class="eyebrow" style="font-size:9px;">Hotel Canino</span>
+      </span>
+    </a>
+
+    <!-- INTRO -->
+    <section id="screen-intro">
+      <div class="progress"><span style="width:0"></span></div>
+      <span class="eyebrow">Test gratis · 1 minuto</span>
+      <h1 class="q-title" style="margin-top:8px;">¿Cuál es el plan ideal para tu perrhijo?</h1>
+      <p class="result-desc">Responde 6 preguntas sobre tu perro y te decimos qué tipo de estadía le acomoda mejor — y te enviamos una recomendación con cariño. 🐾</p>
+      <button class="btn btn--lg btn--primary" id="btn-start">Empezar el test</button>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="screen-quiz" class="hidden">
+      <div class="progress"><span id="bar"></span></div>
+      <div class="q-step" id="step"></div>
+      <h2 class="q-title" id="question"></h2>
+      <div class="options" id="options"></div>
+      <div class="nav-row">
+        <button class="link-btn" id="btn-back">← Atrás</button>
+        <span></span>
+      </div>
+    </section>
+
+    <!-- RESULT + CAPTURE -->
+    <section id="screen-result" class="hidden">
+      <div class="hero-card">
+        <div class="result-badge">Tu recomendación</div>
+        <div class="result-plan" id="plan-name"></div>
+        <p id="plan-desc" style="color:rgba(255,255,255,.95);font-size:var(--text-md);margin:0;"></p>
+      </div>
+
+      <div class="capture">
+        <h2>Te enviamos la recomendación completa + cotización</h2>
+        <p class="who">Déjanos tus datos y te contactamos con el detalle del plan ideal para tu perrhijo y su valor.</p>
+        <form id="capture-form" novalidate>
+          <div class="field2"><input type="text" name="nombre" placeholder="Tu nombre" aria-label="Tu nombre" required /></div>
+          <div class="field2"><input type="email" name="email" placeholder="Tu correo" aria-label="Tu correo" required /></div>
+          <div class="field2"><input type="tel" name="fono" placeholder="Tu WhatsApp (opcional)" aria-label="Tu WhatsApp" /></div>
+          <button type="submit" class="btn btn--lg btn--primary btn--block" id="capture-submit">Enviar mi recomendación</button>
+        </form>
+        <p class="msg" id="capture-msg" style="display:none;"></p>
+      </div>
+
+      <div class="center" style="margin-top:18px;">
+        <button class="link-btn" id="btn-restart">↺ Hacer el test de nuevo</button>
+      </div>
+    </section>
+
+    <div class="test-footer">
+      <a href="./index.html">← Volver al sitio de Piailin</a>
+    </div>
+  </div>
+
+  <script>
+    var FORMSPREE_ENDPOINT = 'https://formspree.io/f/xlgkwqwk';
+
+    // ---- Preguntas (cada opción aporta puntos a los planes; no hay opción "mala") ----
+    var QUESTIONS = [
+      { q: '¿Cómo es tu perro con gente nueva y otros perros?', opts: [
+        { t: 'Súper sociable, se hace amigo de todos', p: { estandar: 2 } },
+        { t: 'Tranquilo, se adapta con calma', p: { estandar: 1 } },
+        { t: 'Tímido o reservado, necesita su tiempo', p: { suite: 1, madre: 1 } },
+        { t: 'Le cuesta mucho, se pone ansioso', p: { madre: 2 } } ] },
+      { q: 'Por las noches en casa, tu perro…', opts: [
+        { t: 'Duerme en su cama o espacio, sin problema', p: { estandar: 2 } },
+        { t: 'Prefiere dormir cerca de un humano', p: { suite: 1 } },
+        { t: 'Duerme en la cama y le cuesta dormir solo', p: { suite: 2, madre: 1 } },
+        { t: 'Necesita compañía constante o se angustia', p: { madre: 2 } } ] },
+      { q: '¿Ha estado antes en un hotel o lejos de ti?', opts: [
+        { t: 'Sí, y le fue bien', p: { estandar: 2 } },
+        { t: 'Alguna vez, con altibajos', p: { suite: 1 } },
+        { t: 'Nunca, sería su primera vez', p: { suite: 1, madre: 1 } },
+        { t: 'Nunca, y se angustia cuando me alejo', p: { madre: 2 } } ] },
+      { q: '¿Tu perro tiene necesidades de salud o medicación?', opts: [
+        { t: 'No, está sano y activo', p: { estandar: 1 } },
+        { t: 'Toma algún medicamento o vitamina con horario', p: { cuidados: 2 } },
+        { t: 'Es senior y necesita cuidados extra', p: { cuidados: 2 } },
+        { t: 'Tiene una condición que requiere atención especial', p: { cuidados: 3 } } ] },
+      { q: '¿Qué tan apegado es a su familia humana?', opts: [
+        { t: 'Independiente, disfruta su espacio', p: { estandar: 2 } },
+        { t: 'Cariñoso, pero tranquilo cuando está solo', p: { estandar: 1 } },
+        { t: 'Muy apegado, me sigue a todos lados', p: { suite: 1, madre: 1 } },
+        { t: 'No tolera estar solo, sufre de ansiedad por separación', p: { madre: 3 } } ] },
+      { q: '¿De qué tamaño es tu perrhijo?', size: true, opts: [
+        { t: 'Pequeño (hasta 10 kg)', p: {}, size: 'pequeño' },
+        { t: 'Mediano o grande', p: {}, size: 'mediano/grande' } ] }
+    ];
+
+    var PLANS = {
+      madre:    { name: 'Madre sustituta', desc: 'Tu perrhijo es muy apegado o ansioso: necesita presencia humana constante. Una cuidadora asume el rol de figura de apego — duerme, come y pasea con él, con la misma rutina y cariño de casa. (Incluye entrevista previa.)' },
+      cuidados: { name: 'Cuidados especiales', desc: 'Tu perro necesita medicación o atención adicional. Le damos sus remedios puntuales y un seguimiento cercano de su salud, con reportes diarios.' },
+      suite:    { name: 'Suite con humano', desc: 'Tu perro es apegado y duerme mejor acompañado. Pasa la noche con una persona de confianza, para que no extrañe y descanse tranquilo.' },
+      estandar: { name: 'Hospedaje estándar', desc: 'Tu perro es sociable y se adapta bien. Disfruta juego, paseos diarios, una cama calentita y fotos para que viajes tranquila.' }
+    };
+
+    // ---- Motor de puntaje (función pura) ----
+    function scorePlan(answers) {
+      var s = { estandar: 0, suite: 0, cuidados: 0, madre: 0 };
+      answers.forEach(function (a) { if (!a || !a.p) return; for (var k in a.p) { s[k] = (s[k] || 0) + a.p[k]; } });
+      var plan;
+      if (s.madre >= 5) plan = 'madre';
+      else if (s.cuidados >= 2) plan = 'cuidados';
+      else if (s.suite >= 2 || s.madre >= 2) plan = 'suite';
+      else plan = 'estandar';
+      return { plan: plan, scores: s };
+    }
+    // Mini auto-test en consola (no afecta a la usuaria)
+    console.assert(scorePlan([{p:{madre:3}},{p:{madre:2}}]).plan === 'madre', 'test madre');
+    console.assert(scorePlan([{p:{estandar:2}},{p:{estandar:2}}]).plan === 'estandar', 'test estandar');
+    console.assert(scorePlan([{p:{cuidados:2}}]).plan === 'cuidados', 'test cuidados');
+
+    // ---- Estado y render ----
+    var idx = 0, answers = [], size = '';
+    var $ = function (id) { return document.getElementById(id); };
+    function show(screen) { ['intro','quiz','result'].forEach(function (s){ $('screen-'+s).classList.toggle('hidden', s!==screen); }); window.scrollTo(0,0); }
+
+    function renderQuestion() {
+      var Q = QUESTIONS[idx];
+      $('step').textContent = 'Pregunta ' + (idx+1) + ' de ' + QUESTIONS.length;
+      $('question').textContent = Q.q;
+      $('bar').style.width = (idx / QUESTIONS.length * 100) + '%';
+      var box = $('options'); box.innerHTML = '';
+      Q.opts.forEach(function (o, i) {
+        var b = document.createElement('button');
+        b.className = 'opt'; b.textContent = o.t;
+        b.onclick = function () {
+          answers[idx] = o;
+          if (Q.size) size = o.size;
+          if (idx < QUESTIONS.length - 1) { idx++; renderQuestion(); }
+          else { finish(); }
+        };
+        box.appendChild(b);
+      });
+      $('btn-back').style.visibility = idx === 0 ? 'hidden' : 'visible';
+    }
+
+    function finish() {
+      var r = scorePlan(answers);
+      var plan = PLANS[r.plan];
+      $('plan-name').textContent = plan.name;
+      var extra = (size === 'pequeño') ? ' Como es de talla pequeña, aplica nuestra tarifa para perros pequeños.' : '';
+      $('plan-desc').textContent = plan.desc + extra;
+      $('capture-form').dataset.plan = plan.name;
+      show('result');
+    }
+
+    $('btn-start').onclick = function () { idx = 0; answers = []; show('quiz'); renderQuestion(); };
+    $('btn-back').onclick = function () { if (idx > 0) { idx--; renderQuestion(); } };
+    $('btn-restart').onclick = function () { idx = 0; answers = []; size = ''; show('intro'); $('capture-msg').style.display='none'; $('capture-form').reset(); $('capture-form').style.display=''; };
+
+    // ---- Captura del lead → Formspree ----
+    $('capture-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var f = this, msg = $('capture-msg');
+      if (!f.checkValidity()) { f.reportValidity(); return; }
+      var btn = $('capture-submit'); btn.disabled = true; btn.textContent = 'Enviando…';
+      var data = new FormData();
+      data.append('origen', 'Test: plan ideal para tu perro');
+      data.append('plan_recomendado', f.dataset.plan || '');
+      data.append('nombre', f.elements['nombre'].value);
+      data.append('email', f.elements['email'].value);
+      data.append('fono', f.elements['fono'].value || '');
+      data.append('tamano', size || '');
+      data.append('respuestas', answers.map(function (a, i) { return (i+1) + '. ' + (a ? a.t : '—'); }).join(' | '));
+      data.append('_subject', 'Nuevo lead — Test plan ideal (Piailin)');
+      function ok() {
+        f.style.display = 'none';
+        msg.style.display = 'block'; msg.style.color = 'var(--success)';
+        msg.innerHTML = '¡Gracias! 🐾 Recibimos tus datos y te enviaremos la recomendación completa. <br><a class="btn btn--secondary btn--sm" style="margin-top:12px;" href="./index.html#reserva">Reservar ahora</a>';
+      }
+      function fail() {
+        btn.disabled = false; btn.textContent = 'Enviar mi recomendación';
+        msg.style.display = 'block'; msg.style.color = 'var(--danger)';
+        msg.textContent = 'Ups, no pudimos enviar. Revisa tu conexión e intenta de nuevo.';
+      }
+      fetch(FORMSPREE_ENDPOINT, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+        .then(function (r) { r.ok ? ok() : fail(); }).catch(fail);
+    });
+  </script>
+</body>
+</html>
